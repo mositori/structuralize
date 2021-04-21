@@ -142,7 +142,8 @@
             "error"
           ]
         }
-      ]
+      ],
+      "no-unused-vars": "off"
     }
   },
   "prettier": {

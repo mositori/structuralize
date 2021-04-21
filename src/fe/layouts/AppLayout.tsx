@@ -2,26 +2,38 @@ import { ReactNode, useCallback } from 'react';
 import { HandlerProps, ReflexContainer, ReflexElement, ReflexSplitter } from 'react-reflex';
 import styled from 'styled-components';
 import { Sidebar } from 'components/Sidebar';
-import { useAppLayoutContext } from 'contexts/AppLayoutContext';
+import { SIDEBAR } from 'constants/app';
 import { GlobalBodyFitIntoViewbox } from 'layouts';
 import 'react-reflex/styles.css';
 
 interface Props {
   children: ReactNode;
+  sidebarWidth: number;
+  onSidebarStopResize: (width: number) => void;
 }
-export function AppLayout({ children }: Props) {
-  const { sidebarWidth, setSidebarWidth } = useAppLayoutContext();
+
+export function AppLayout({ children, sidebarWidth, onSidebarStopResize }: Props) {
   const handleStopResize = useCallback(
     ({ component }: HandlerProps) => {
-      setSidebarWidth(component.props.flex);
+      if (!component.ref || typeof component.ref === 'string') {
+        console.warn('component.ref is undefined');
+        return;
+      }
+      // TODO: 型をなんとかしたい
+      const { width } = (component.ref as any).current.getBoundingClientRect();
+      onSidebarStopResize(width);
     },
-    [setSidebarWidth],
+    [onSidebarStopResize],
   );
   return (
     <Container>
       <GlobalBodyFitIntoViewbox />
       <ReflexContainer orientation="vertical">
-        <ReflexElement flex={sidebarWidth} onStopResize={handleStopResize}>
+        <ReflexElement
+          size={sidebarWidth}
+          minSize={SIDEBAR.MIN_WIDTH}
+          onStopResize={handleStopResize}
+        >
           <Sidebar />
         </ReflexElement>
         <ReflexSplitter />
