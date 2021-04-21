@@ -12,10 +12,17 @@
     ]
   },
   "scripts": {
-    "dev": "cd src/fe && yarn dev"
+    "dev:fe": "yarn workspace structuralize-fe dev"
   },
   "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.24.0",
+    "husky": "^6.0.0",
     "prettier": "^2.2.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
