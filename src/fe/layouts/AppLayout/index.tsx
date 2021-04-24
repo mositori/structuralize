@@ -1,9 +1,9 @@
 import { ReactNode, useCallback } from 'react';
 import { HandlerProps, ReflexContainer, ReflexElement, ReflexSplitter } from 'react-reflex';
 import styled from 'styled-components';
-import { Sidebar } from 'components/Sidebar';
 import { SIDEBAR } from 'constants/app';
 import { GlobalBodyFitIntoViewbox } from 'layouts';
+import { Sidebar } from 'layouts/AppLayout/Sidebar';
 import 'react-reflex/styles.css';
 
 interface Props {

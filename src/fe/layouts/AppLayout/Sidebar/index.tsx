@@ -1,4 +1,5 @@
 import { Home } from '@geist-ui/react-icons';
+import Link from 'next/link';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { TextWrap } from 'components/TextWrap';
@@ -7,12 +8,14 @@ import { centering } from 'utils/styles';
 type MenuItemType = {
   icon: ReactNode;
   label: string;
+  href: string;
 };
 
 const MENU_ITEMS: MenuItemType[] = [
   {
     icon: <Home />,
     label: 'Dashboard',
+    href: '/dashboard',
   },
 ];
 
@@ -21,17 +24,22 @@ export function Sidebar() {
     <Container>
       <MenuItemContainer>
         {MENU_ITEMS.map((menuItem) => (
-          <MenuItem key={menuItem.label}>
-            <IconWrapper>{menuItem.icon}</IconWrapper>
-            <TextWrap ellipsis={1}>{menuItem.label}</TextWrap>
-          </MenuItem>
+          <Link key={menuItem.label} href={menuItem.href}>
+            <MenuItem>
+              <MenuIconWrapper>{menuItem.icon}</MenuIconWrapper>
+              <MenuItemText ellipsis={1}> {menuItem.label}</MenuItemText>
+            </MenuItem>
+          </Link>
         ))}
       </MenuItemContainer>
     </Container>
   );
 }
 
-const Container = styled.nav``;
+const Container = styled.nav`
+  height: 100%;
+  background-color: ${(p) => p.theme.palette.accents_1};
+`;
 
 const MenuItemContainer = styled.div`
   display: flex;
@@ -50,11 +58,20 @@ const MenuItem = styled.div`
   padding: 4px 12px;
 
   :hover {
-    background-color: ${({ theme }) => theme.palette.cyanLight};
+    background-color: ${({ theme }) => theme.palette.successLighter};
   }
 `;
 
-const IconWrapper = styled.div`
+const MenuItemText = styled(TextWrap)`
+  color: ${(p) => p.theme.palette.accents_6};
+`;
+
+const MenuIconWrapper = styled.div`
   flex: none;
+  color: ${(p) => p.theme.palette.accents_4};
   ${centering()}
+
+  ${MenuItem}:hover & {
+    color: ${(p) => p.theme.palette.successLight};
+  }
 `;

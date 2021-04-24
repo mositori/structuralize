@@ -4,7 +4,8 @@ export * from './AppLayout';
 
 export const GlobalBodyFitIntoViewbox = createGlobalStyle`
     body {
-        position: fixed;
+        /* MEMO: !important付けないとCustom theme時にOverloadされる */
+        position: fixed !important;
         inset: 0;
     }
 
