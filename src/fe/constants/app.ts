@@ -3,7 +3,7 @@ import { GeistUserTheme } from 'utils';
 
 export const SIDEBAR = {
   DEFAULT_WIDTH: 200,
-  MIN_WIDTH: 150,
+  MIN_WIDTH: 50,
 } as const;
 
 const APP_LIGHT_THEME_ID = 'app_light';
@@ -15,6 +15,9 @@ export const APP_THEMES = {
       font: {
         mono: 'Ubuntu',
         sans: 'Ubuntu',
+      },
+      layout: {
+        radius: '4px',
       },
     } as GeistUserTheme),
   },

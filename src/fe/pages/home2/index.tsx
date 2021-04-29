@@ -3,9 +3,9 @@ import { useAppLayoutContext } from 'contexts/AppLayoutContext';
 import { AppLayout } from 'layouts';
 
 export default function Home() {
-  const { sidebarWidth, setSidebarWidth } = useAppLayoutContext();
+  const { sidebarCollapsed, toggleSidebar } = useAppLayoutContext();
   return (
-    <AppLayout sidebarWidth={sidebarWidth} onSidebarStopResize={setSidebarWidth}>
+    <AppLayout sidebarCollapsed={sidebarCollapsed} onSidebarToggled={toggleSidebar}>
       <Link href="/home">Go to tasks</Link>
     </AppLayout>
   );

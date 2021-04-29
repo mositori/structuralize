@@ -1,4 +1,6 @@
-import { Themes, GeistUIThemes } from '@geist-ui/react';
+import { GeistUIThemes } from '@geist-ui/react';
+
+export * from './hooks';
 
 export function unreachable(msg?: string) {
   throw new Error(msg);
