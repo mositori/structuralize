@@ -1,9 +1,9 @@
 import constate from 'constate';
-import { useState } from 'react';
+import { useToggle } from 'utils';
 
 export const [AppLayoutProvider, useAppLayoutContext] = constate(
-  ({ defaultSidebarWidth = 0 }: { defaultSidebarWidth?: number }) => {
-    const [sidebarWidth, setSidebarWidth] = useState(defaultSidebarWidth);
-    return { sidebarWidth, setSidebarWidth };
+  ({ defaultSidebarCollapsed = false }: { defaultSidebarCollapsed?: boolean }) => {
+    const [sidebarCollapsed, toggleSidebar] = useToggle(defaultSidebarCollapsed);
+    return { sidebarCollapsed, toggleSidebar };
   },
 );
