@@ -32,7 +32,9 @@ function AppProvider({ children }: { children: ReactNode }) {
 
   return (
     <ThemeProvider theme={theme}>
-      <AppLayoutProvider defaultSidebarWidth={SIDEBAR.DEFAULT_WIDTH}>{children}</AppLayoutProvider>
+      <AppLayoutProvider defaultSidebarCollapsed={SIDEBAR.DEFAULT_COLLAPSED}>
+        {children}
+      </AppLayoutProvider>
     </ThemeProvider>
   );
 }

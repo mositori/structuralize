@@ -4,8 +4,8 @@ import styled, { css } from 'styled-components';
 import { TextWrap } from 'components/TextWrap';
 import { centering } from 'utils/styles';
 
-export const MENU_ITEM_SIZE = 50;
-export const MENU_ITEM_MARGIN_X = 12;
+export const MENU_ITEM_SIZE = 42;
+export const MENU_ITEM_MARGIN_X = 16;
 export const MENU_ITEM_COLLAPSED_WIDTH = MENU_ITEM_SIZE + MENU_ITEM_MARGIN_X * 2;
 
 interface Props {

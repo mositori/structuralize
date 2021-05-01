@@ -2,8 +2,7 @@ import { Themes } from '@geist-ui/react';
 import { GeistUserTheme } from 'utils';
 
 export const SIDEBAR = {
-  DEFAULT_WIDTH: 200,
-  MIN_WIDTH: 50,
+  DEFAULT_COLLAPSED: false,
 } as const;
 
 const APP_LIGHT_THEME_ID = 'app_light';
